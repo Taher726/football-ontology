@@ -1,0 +1,1359 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/football-ontology#"
+     xml:base="http://www.semanticweb.org/football-ontology"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/football-ontology">
+        <owl:imports rdf:resource="http://www.w3.org/2003/11/swrlb"/>
+        <dc:creator>Football Ontology Team</dc:creator>
+        <dc:description>An ontology for describing football (soccer) concepts</dc:description>
+        <dc:title>Football Domain Ontology</dc:title>
+        <owl:versionInfo>1.0</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#baseLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#baseLocation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Place"/>
+        <rdfs:comment>Indicates the base location of a team</rdfs:comment>
+        <rdfs:label>base location</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#coaches -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#coaches">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Coach"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:comment>Indicates which team a coach manages</rdfs:comment>
+        <rdfs:label>coaches</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#hasAwayTeam -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#hasAwayTeam">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Match"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:comment>Indicates the away team of a match</rdfs:comment>
+        <rdfs:label>has away team</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#hasHomeTeam -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#hasHomeTeam">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Match"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:comment>Indicates the home team of a match</rdfs:comment>
+        <rdfs:label>has home team</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#hasPlayer -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#hasPlayer">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/football-ontology#playsFor"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:comment>Indicates which players are part of a team</rdfs:comment>
+        <rdfs:label>has player</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#homeStadium -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#homeStadium">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Stadium"/>
+        <rdfs:comment>Indicates which stadium is the home ground for a team</rdfs:comment>
+        <rdfs:label>home stadium</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#isPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#isPartOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Match"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Tournament"/>
+        <rdfs:comment>Indicates which tournament a match is part of</rdfs:comment>
+        <rdfs:label>is part of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#isRivalOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#isRivalOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:comment>Indicates rivalry between two teams</rdfs:comment>
+        <rdfs:label>is rival of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#organizes -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#organizes">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Federation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Tournament"/>
+        <rdfs:comment>Indicates which tournament is organized by a federation</rdfs:comment>
+        <rdfs:label>organizes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#participatesIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#participatesIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Tournament"/>
+        <rdfs:comment>Indicates which tournament a team participates in</rdfs:comment>
+        <rdfs:label>participates in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#playedAt -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#playedAt">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Match"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Stadium"/>
+        <rdfs:comment>Indicates which stadium a match was played at</rdfs:comment>
+        <rdfs:label>played at</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#playsFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#playsFor">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:comment>Indicates which team a player plays for</rdfs:comment>
+        <rdfs:label>plays for</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#receivesCard -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#receivesCard">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Card"/>
+        <rdfs:comment>Indicates which card a player received</rdfs:comment>
+        <rdfs:label>receives card</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#refereesMatch -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/football-ontology#refereesMatch">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Referee"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/football-ontology#Match"/>
+        <rdfs:comment>Indicates which match a referee officiates</rdfs:comment>
+        <rdfs:label>referees match</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#birthDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#birthDate">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>The birth date of a person</rdfs:comment>
+        <rdfs:label>birth date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#contractEndsIn -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#contractEndsIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>The year when a player&apos;s contract ends</rdfs:comment>
+        <rdfs:label>contract ends in</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#goalsScored -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#goalsScored">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>The number of goals scored by a player</rdfs:comment>
+        <rdfs:label>goals scored</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#matchDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#matchDate">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Match"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>The date and time of a match</rdfs:comment>
+        <rdfs:label>match date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#matchesPlayed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#matchesPlayed">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>The number of matches played by a player</rdfs:comment>
+        <rdfs:label>matches played</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#nationality -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#nationality">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The nationality of a person</rdfs:comment>
+        <rdfs:label>nationality</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#playerName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#playerName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The name of a player</rdfs:comment>
+        <rdfs:label>player name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#playerNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#playerNumber">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>The number worn by a player</rdfs:comment>
+        <rdfs:label>player number</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#playerPosition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#playerPosition">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The position played by a player</rdfs:comment>
+        <rdfs:label>player position</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#stadiumCapacity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#stadiumCapacity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Stadium"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>The capacity of a stadium</rdfs:comment>
+        <rdfs:label>stadium capacity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#stadiumName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#stadiumName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Stadium"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The name of a stadium</rdfs:comment>
+        <rdfs:label>stadium name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#teamName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#teamName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The name of a team</rdfs:comment>
+        <rdfs:label>team name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#tournamentName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/football-ontology#tournamentName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/football-ontology#Tournament"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The name of a tournament</rdfs:comment>
+        <rdfs:label>tournament name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Ball -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Ball">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#FootballObject"/>
+        <rdfs:comment>A football</rdfs:comment>
+        <rdfs:label>Ball</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Card -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Card">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#FootballObject"/>
+        <rdfs:comment>A referee card</rdfs:comment>
+        <rdfs:label>Card</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#ClubTeam -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#ClubTeam">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/football-ontology#NationalTeam"/>
+        <rdfs:comment>A football club team</rdfs:comment>
+        <rdfs:label>ClubTeam</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Coach -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Coach">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Person"/>
+        <rdfs:comment>A football coach or manager</rdfs:comment>
+        <rdfs:label>Coach</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Defender -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Defender">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:comment>A player that plays as a defender</rdfs:comment>
+        <rdfs:label>Defender</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Event -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Event">
+        <rdfs:comment>A football-related event</rdfs:comment>
+        <rdfs:label>Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#ExperiencedPlayer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#ExperiencedPlayer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:comment>Players with more than 500 matches played</rdfs:comment>
+        <rdfs:label>ExperiencedPlayer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Federation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Federation">
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:comment>A football governing body</rdfs:comment>
+        <rdfs:label>Federation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#FootballObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#FootballObject">
+        <rdfs:comment>Objects used in football</rdfs:comment>
+        <rdfs:label>FootballObject</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Forward -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Forward">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:comment>A player that plays as a forward</rdfs:comment>
+        <rdfs:label>Forward</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Goal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Goal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#FootballObject"/>
+        <rdfs:comment>A goal on the field</rdfs:comment>
+        <rdfs:label>Goal</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Goalkeeper -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Goalkeeper">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:comment>A player that plays as a goalkeeper</rdfs:comment>
+        <rdfs:label>Goalkeeper</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#LargeStadium -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#LargeStadium">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Stadium"/>
+        <rdfs:comment>Stadiums with capacity over 90,000</rdfs:comment>
+        <rdfs:label>LargeStadium</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Match -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Match">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Event"/>
+        <rdfs:comment>A football match</rdfs:comment>
+        <rdfs:label>Match</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Midfielder -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Midfielder">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:comment>A player that plays as a midfielder</rdfs:comment>
+        <rdfs:label>Midfielder</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#NationalTeam -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#NationalTeam">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:comment>A national football team</rdfs:comment>
+        <rdfs:label>NationalTeam</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#NeedsContractRenewal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#NeedsContractRenewal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:comment>Players whose contracts end in 2023</rdfs:comment>
+        <rdfs:label>NeedsContractRenewal</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Person">
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:comment>Represents a person in the football domain</rdfs:comment>
+        <rdfs:label>Person</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Place -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Place">
+        <rdfs:comment>A location related to football</rdfs:comment>
+        <rdfs:label>Place</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Player -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Player">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Person"/>
+        <rdfs:comment>A football player</rdfs:comment>
+        <rdfs:label>Player</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#ProfessionalTeam -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#ProfessionalTeam">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/football-ontology#hasPlayer"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">11</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#RedCard -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#RedCard">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Card"/>
+        <rdfs:comment>A red card shown by the referee</rdfs:comment>
+        <rdfs:label>RedCard</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Referee -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Referee">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Person"/>
+        <rdfs:comment>A football match official</rdfs:comment>
+        <rdfs:label>Referee</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Stadium -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Stadium">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Place"/>
+        <rdfs:comment>A football stadium</rdfs:comment>
+        <rdfs:label>Stadium</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#StarPlayer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#StarPlayer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+        <rdfs:comment>Players with more than 300 goals scored</rdfs:comment>
+        <rdfs:label>StarPlayer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Striker -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Striker">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Forward"/>
+        <rdfs:comment>A player that plays as a striker or center-forward</rdfs:comment>
+        <rdfs:label>Striker</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Team -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Team">
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:comment>A football team</rdfs:comment>
+        <rdfs:label>Team</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#TeamStaff -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#TeamStaff">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Person"/>
+        <rdfs:comment>Staff members of a football team</rdfs:comment>
+        <rdfs:label>TeamStaff</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Tournament -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Tournament">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Event"/>
+        <rdfs:comment>A football tournament or competition</rdfs:comment>
+        <rdfs:label>Tournament</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Training -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#Training">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Event"/>
+        <rdfs:comment>A football training session</rdfs:comment>
+        <rdfs:label>Training</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#TrainingGround -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#TrainingGround">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Place"/>
+        <rdfs:comment>A football training ground</rdfs:comment>
+        <rdfs:label>TrainingGround</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#YellowCard -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/football-ontology#YellowCard">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/football-ontology#Card"/>
+        <rdfs:comment>A yellow card shown by the referee</rdfs:comment>
+        <rdfs:label>YellowCard</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Organization -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Barcelona -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/football-ontology#Barcelona">
+        <rdf:type rdf:resource="http://www.semanticweb.org/football-ontology#ClubTeam"/>
+        <baseLocation rdf:resource="http://www.semanticweb.org/football-ontology#Barcelona_City"/>
+        <homeStadium rdf:resource="http://www.semanticweb.org/football-ontology#CampNou"/>
+        <teamName>Barcelona</teamName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Barcelona_City -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/football-ontology#Barcelona_City">
+        <rdf:type rdf:resource="http://www.semanticweb.org/football-ontology#Place"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#BenzemaK -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/football-ontology#BenzemaK">
+        <rdf:type rdf:resource="http://www.semanticweb.org/football-ontology#Forward"/>
+        <playsFor rdf:resource="http://www.semanticweb.org/football-ontology#RealMadrid"/>
+        <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1987-12-19</birthDate>
+        <contractEndsIn rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2023</contractEndsIn>
+        <goalsScored rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">354</goalsScored>
+        <matchesPlayed rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">648</matchesPlayed>
+        <nationality>France</nationality>
+        <playerName>Karim Benzema</playerName>
+        <playerNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</playerNumber>
+        <playerPosition>Striker</playerPosition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#CampNou -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/football-ontology#CampNou">
+        <rdf:type rdf:resource="http://www.semanticweb.org/football-ontology#Stadium"/>
+        <stadiumCapacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">99354</stadiumCapacity>
+        <stadiumName>Camp Nou</stadiumName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#ChampionsLeague -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/football-ontology#ChampionsLeague">
+        <rdf:type rdf:resource="http://www.semanticweb.org/football-ontology#Tournament"/>
+        <tournamentName>UEFA Champions League</tournamentName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#LaLiga -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/football-ontology#LaLiga">
+        <rdf:type rdf:resource="http://www.semanticweb.org/football-ontology#Tournament"/>
+        <tournamentName>La Liga</tournamentName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#Madrid -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/football-ontology#Madrid">
+        <rdf:type rdf:resource="http://www.semanticweb.org/football-ontology#Place"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#MessiL -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/football-ontology#MessiL">
+        <rdf:type rdf:resource="http://www.semanticweb.org/football-ontology#Forward"/>
+        <playsFor rdf:resource="http://www.semanticweb.org/football-ontology#Barcelona"/>
+        <birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1987-06-24</birthDate>
+        <contractEndsIn rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2023</contractEndsIn>
+        <goalsScored rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">672</goalsScored>
+        <matchesPlayed rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">778</matchesPlayed>
+        <nationality>Argentina</nationality>
+        <playerName>Lionel Messi</playerName>
+        <playerNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</playerNumber>
+        <playerPosition>Right Wing</playerPosition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#RealMadrid -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/football-ontology#RealMadrid">
+        <rdf:type rdf:resource="http://www.semanticweb.org/football-ontology#ClubTeam"/>
+        <baseLocation rdf:resource="http://www.semanticweb.org/football-ontology#Madrid"/>
+        <homeStadium rdf:resource="http://www.semanticweb.org/football-ontology#SantiagoBernabeu"/>
+        <teamName>Real Madrid</teamName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#SantiagoBernabeu -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/football-ontology#SantiagoBernabeu">
+        <rdf:type rdf:resource="http://www.semanticweb.org/football-ontology#Stadium"/>
+        <stadiumCapacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">81044</stadiumCapacity>
+        <stadiumName>Santiago Bernabeu</stadiumName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/football-ontology#WorldCup2022 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/football-ontology#WorldCup2022">
+        <rdf:type rdf:resource="http://www.semanticweb.org/football-ontology#Tournament"/>
+        <tournamentName>FIFA World Cup 2022</tournamentName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#t1">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#t2">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#l">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#p">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#year">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#g">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#m">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#s">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#c">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#t">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>S4</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/football-ontology#contractEndsIn"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#p"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/football-ontology#year"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#equal"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/football-ontology#year"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2023</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/football-ontology#NeedsContractRenewal"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>S3</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/football-ontology#ClubTeam"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#t1"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/football-ontology#ClubTeam"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#t2"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/football-ontology#baseLocation"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#t1"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/football-ontology#l"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/football-ontology#baseLocation"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#t2"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/football-ontology#l"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#notEqual"/>
+                                                        <swrl:arguments rdf:parseType="Collection">
+                                                            <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#t1"/>
+                                                            <rdf:Description rdf:about="http://www.semanticweb.org/football-ontology#t2"/>
+                                                        </swrl:arguments>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/football-ontology#isRivalOf"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#t1"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/football-ontology#t2"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>S5</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/football-ontology#goalsScored"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#p"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/football-ontology#g"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/football-ontology#g"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">300</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/football-ontology#StarPlayer"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>S1</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/football-ontology#Player"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/football-ontology#matchesPlayed"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#p"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/football-ontology#m"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/football-ontology#m"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/football-ontology#ExperiencedPlayer"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>S2</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/football-ontology#Stadium"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/football-ontology#stadiumCapacity"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#s"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/football-ontology#c"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/football-ontology#c"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90000</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/football-ontology#LargeStadium"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>S6</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/football-ontology#Team"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#t"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/football-ontology#hasPlayer"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#t"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/football-ontology#p"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/football-ontology#goalsScored"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#p"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/football-ontology#g"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                                <swrl:arguments>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:resource="http://www.semanticweb.org/football-ontology#g"/>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </swrl:arguments>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/football-ontology#participatesIn"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/football-ontology#t"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/football-ontology#ChampionsLeague"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
