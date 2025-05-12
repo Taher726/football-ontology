@@ -13,6 +13,7 @@ Cette ontologie modélise le domaine du football (soccer) en utilisant les techn
 - [Règles SWRL](#règles-swrl)
 - [Installation](#installation)
 - [Utilisation](#utilisation)
+- [Exemples de Requêtes SPARQL](#exemples-de-requêtes-sparql)
 - [Exemples](#exemples)
 - [Licence](#licence)
 - [Contact](#contact)
@@ -99,21 +100,6 @@ L'ontologie est organisée selon une hiérarchie de classes avec des relations s
 
 L'ontologie comprend plusieurs règles SWRL qui permettent d'inférer automatiquement de nouvelles connaissances:
 
-1. **S1**: Classifie les joueurs avec plus de 500 matchs comme `ExperiencedPlayer`
-2. **S2**: Identifie les stades avec capacité > 90,000 comme `LargeStadium`
-3. **S3**: Établit des relations de rivalité entre les équipes de la même ville
-4. **S4**: Identifie les joueurs dont le contrat expire en 2023 comme `NeedsContractRenewal`
-5. **S5**: Classifie les joueurs avec plus de 300 buts comme `StarPlayer`
-6. **S6**: Qualifie automatiquement les équipes avec joueurs marquant > 500 buts pour la Ligue des Champions
+### Code des Règles SWRL
 
-## 📥 Installation
-
-Pour utiliser cette ontologie:
-
-1. Téléchargez le fichier RDF/XML de l'ontologie
-2. Ouvrez-le avec un éditeur d'ontologies comme Protégé (version 5.5.0 ou supérieure recommandée)
-3. Pour le raisonnement, utilisez Pellet (recommandé) ou HermiT
-
-```bash
-# Si vous utilisez Apache Jena pour manipuler l'ontologie
-apache-jena/bin/riot --validate football-ontology.rdf
+1. **Règle S1**: Classifie les joueurs avec plus de 500 matchs comme `ExperiencedPlayer`
