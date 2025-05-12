@@ -113,66 +113,6 @@ L'ontologie est organisée selon une hiérarchie de classes avec des relations s
 * **stadiumCapacity**: Capacité du stade
 * **teamName**: Nom de l'équipe
 
-## ⚙️ Règles SWRL
-
-### Code des Règles SWRL
-
-1. **Règle S1**: Classifie les joueurs avec plus de 500 matchs comme `ExperiencedPlayer`
-
-```
-Player(?p) ∧ matchesPlayed(?p, ?m) ∧ swrlb:greaterThan(?m, 500) → ExperiencedPlayer(?p)
-```
-
-2. **Règle S2**: Identifie les stades avec capacité > 90,000 comme `LargeStadium`
-
-```
-Stadium(?s) ∧ stadiumCapacity(?s, ?c) ∧ swrlb:greaterThan(?c, 90000) → LargeStadium(?s)
-```
-
-3. **Règle S3**: Établit des relations de rivalité entre les équipes de la même ville
-
-```
-ClubTeam(?t1) ∧ ClubTeam(?t2) ∧ baseLocation(?t1, ?l) ∧ baseLocation(?t2, ?l) ∧ swrlb:notEqual(?t1, ?t2) → isRivalOf(?t1, ?t2)
-```
-
-4. **Règle S4**: Identifie les joueurs dont le contrat expire en 2023 comme `NeedsContractRenewal`
-
-```
-Player(?p) ∧ contractEndsIn(?p, ?year) ∧ swrlb:equal(?year, 2023) → NeedsContractRenewal(?p)
-```
-
-5. **Règle S5**: Classifie les joueurs avec plus de 300 buts comme `StarPlayer`
-
-```
-Player(?p) ∧ goalsScored(?p, ?g) ∧ swrlb:greaterThan(?g, 300) → StarPlayer(?p)
-```
-
-6. **Règle S6**: Qualifie automatiquement les équipes avec joueurs marquant > 500 buts pour la Ligue des Champions
-
-```
-Team(?t) ∧ hasPlayer(?t, ?p) ∧ goalsScored(?p, ?g) ∧ swrlb:greaterThan(?g, 500) → participatesIn(?t, ChampionsLeague)
-```
-
-## 👅 Installation
-
-1. Téléchargez le fichier RDF/XML de l'ontologie
-2. Ouvrez-le avec un éditeur d'ontologies comme Protégé (version 5.5.0 ou supérieure recommandée)
-3. Pour le raisonnement, utilisez Pellet (recommandé) ou HermiT
-
-```bash
-# Si vous utilisez Apache Jena pour manipuler l'ontologie
-apache-jena/bin/riot --validate football-ontology.rdf
-```
-
-## 🚀 Utilisation
-
-Avec Protégé:
-
-* Ouvrez l'ontologie dans Protégé
-* Activez un raisonneur (Pellet recommandé)
-* Exécutez le raisonneur pour voir les classifications automatiques
-* Explorez la hiérarchie de classes et les instances classifiées
-
 ## 🔍 Exemples de Requêtes SPARQL
 
 ### Requête 1: Trouver les joueurs expérimentés
@@ -233,10 +173,51 @@ WHERE {
 }
 ```
 
-## 🌐 Licence
+## ⚙️ Règles SWRL
 
-\[Ajouter la licence ici]
+### Code des Règles SWRL
 
-## 📞 Contact
+1. **Règle S1**: Classifie les joueurs avec plus de 500 matchs comme `ExperiencedPlayer`
 
-Pour plus d'informations, veuillez contacter \[votre nom ou adresse e-mail].
+```
+Player(?p) ∧ matchesPlayed(?p, ?m) ∧ swrlb:greaterThan(?m, 500) → ExperiencedPlayer(?p)
+```
+
+2. **Règle S2**: Identifie les stades avec capacité > 90,000 comme `LargeStadium`
+
+```
+Stadium(?s) ∧ stadiumCapacity(?s, ?c) ∧ swrlb:greaterThan(?c, 90000) → LargeStadium(?s)
+```
+
+3. **Règle S3**: Établit des relations de rivalité entre les équipes de la même ville
+
+```
+ClubTeam(?t1) ∧ ClubTeam(?t2) ∧ baseLocation(?t1, ?l) ∧ baseLocation(?t2, ?l) ∧ swrlb:notEqual(?t1, ?t2) → isRivalOf(?t1, ?t2)
+```
+
+4. **Règle S4**: Identifie les joueurs dont le contrat expire en 2023 comme `NeedsContractRenewal`
+
+```
+Player(?p) ∧ contractEndsIn(?p, ?year) ∧ swrlb:equal(?year, 2023) → NeedsContractRenewal(?p)
+```
+
+5. **Règle S5**: Classifie les joueurs avec plus de 300 buts comme `StarPlayer`
+
+```
+Player(?p) ∧ goalsScored(?p, ?g) ∧ swrlb:greaterThan(?g, 300) → StarPlayer(?p)
+```
+
+6. **Règle S6**: Qualifie automatiquement les équipes avec joueurs marquant > 500 buts pour la Ligue des Champions
+
+```
+Team(?t) ∧ hasPlayer(?t, ?p) ∧ goalsScored(?p, ?g) ∧ swrlb:greaterThan(?g, 500) → participatesIn(?t, ChampionsLeague)
+```
+
+## 🚀 Utilisation
+
+Avec Protégé:
+
+* Ouvrez l'ontologie dans Protégé
+* Activez un raisonneur (Pellet recommandé)
+* Exécutez le raisonneur pour voir les classifications automatiques
+* Explorez la hiérarchie de classes et les instances classifiées
