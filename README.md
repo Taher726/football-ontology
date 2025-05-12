@@ -1,161 +1,119 @@
-# Football Domain Ontology
+# README - Ontologie du Domaine du Football
 
-## Domain Description
-This ontology models the football (soccer) domain, representing key concepts such as players, teams, matches, competitions, venues, and officials. The ontology enables semantic querying and reasoning about football-related information.
+## 🌟 Description du Projet
 
-## Namespaces Used
+Cette ontologie modélise le domaine du football (soccer) en utilisant les technologies du Web Sémantique. Elle fournit une structure formelle pour représenter les joueurs, équipes, matchs, stades et autres concepts liés au football, permettant l'inférence automatique et la classification à l'aide de règles SWRL.
 
-- **RDF**: http://www.w3.org/1999/02/22-rdf-syntax-ns# - Used for basic RDF constructs
-- **RDFS**: http://www.w3.org/2000/01/rdf-schema# - Used for class hierarchies and property domains/ranges
-- **OWL**: http://www.w3.org/2002/07/owl# - Used for advanced ontology features
-- **XSD**: http://www.w3.org/2001/XMLSchema# - Used for data types
-- **DC**: http://purl.org/dc/elements/1.1/ - Used for document metadata
-- **FOAF**: http://xmlns.com/foaf/0.1/ - Used for person and organization concepts
-- **SKOS**: http://www.w3.org/2004/02/skos/core# - Used for concept classification
+## 📋 Table des Matières
 
-## Classes and Subclasses
+- [Aperçu](#aperçu)
+- [Structure de l'Ontologie](#structure-de-lontologie)
+- [Classes Principales](#classes-principales)
+- [Propriétés](#propriétés)
+- [Règles SWRL](#règles-swrl)
+- [Installation](#installation)
+- [Utilisation](#utilisation)
+- [Exemples](#exemples)
+- [Licence](#licence)
+- [Contact](#contact)
 
-### Person
-- Player
-  - Goalkeeper
-  - Defender
-  - Midfielder
-  - Forward
-- Coach
-- Referee
-- TeamStaff
+## 🔍 Aperçu
 
-### Organization
-- Team
-  - ClubTeam
-  - NationalTeam
-- Federation
+Cette ontologie du football a été développée pour:
+- Modéliser la taxonomie des entités du football (joueurs, équipes, stades, etc.)
+- Établir des relations explicites entre ces entités
+- Permettre l'inférence de nouvelles connaissances à l'aide de règles
+- Servir de base pour des applications analytiques dans le domaine sportif
 
-### Event
-- Match
-- Tournament
-- Training
+L'ontologie est écrite en RDF/XML et utilise le langage OWL 2 pour la modélisation des classes et des propriétés, ainsi que SWRL pour les règles d'inférence.
 
-### Place
-- Stadium
-- TrainingGround
+## 🏗️ Structure de l'Ontologie
 
-### FootballObject
-- Ball
-- Goal
-- Card
-  - YellowCard
-  - RedCard
+L'ontologie est organisée selon une hiérarchie de classes avec des relations spécifiques au domaine du football. Elle s'appuie sur des ontologies externes comme FOAF pour les concepts de base, tout en développant des concepts spécifiques au domaine du football.
 
-## Properties
+## 📊 Classes Principales
 
-### Object Properties
-- playsFor (domain: Player, range: Team)
-- coaches (domain: Coach, range: Team)
-- participatesIn (domain: Team, range: Tournament)
-- playedAt (domain: Match, range: Stadium)
-- hasHomeTeam (domain: Match, range: Team)
-- hasAwayTeam (domain: Match, range: Team)
-- refereesMatch (domain: Referee, range: Match)
-- isPartOf (domain: Match, range: Tournament)
-- hasPlayer (domain: Team, range: Player)
-- performsAction (domain: Player, range: Action)
-- receivesCard (domain: Player, range: Card)
+### Personnes
+- **Person**: Classe de base pour tous les individus
+  - **Player**: Joueurs de football
+    - **Forward**: Attaquants
+      - **Striker**: Avant-centres
+    - **Midfielder**: Milieux de terrain
+    - **Defender**: Défenseurs
+    - **Goalkeeper**: Gardiens de but
+  - **Coach**: Entraîneurs
+  - **Referee**: Arbitres
+  - **TeamStaff**: Personnel d'équipe
 
-### Data Properties
-- playerNumber (domain: Player, range: xsd:integer)
-- playerPosition (domain: Player, range: xsd:string)
-- birthDate (domain: Person, range: xsd:date)
-- teamName (domain: Team, range: xsd:string)
-- matchDate (domain: Match, range: xsd:dateTime)
-- goalsScored (domain: Player, range: xsd:integer)
-- stadiumCapacity (domain: Stadium, range: xsd:integer)
-- nationality (domain: Person, range: xsd:string)
+### Équipes
+- **Team**: Équipes de football
+  - **ClubTeam**: Équipes de club
+  - **NationalTeam**: Équipes nationales
+  - **ProfessionalTeam**: Équipes professionnelles (avec contrainte min. 11 joueurs)
 
-## SPARQL Queries
+### Événements
+- **Event**: Événements liés au football
+  - **Match**: Matchs de football
+  - **Tournament**: Tournois et compétitions
+  - **Training**: Sessions d'entraînement
 
-### Query 1: Find all forwards who scored more than 10 goals
-```sparql
-PREFIX fb: <http://www.semanticweb.org/football-ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+### Lieux
+- **Place**: Emplacements pertinents pour le football
+  - **Stadium**: Stades de football
+    - **LargeStadium**: Stades de grande capacité (>90,000)
+  - **TrainingGround**: Terrains d'entraînement
 
-SELECT ?player ?name ?goals ?team
-WHERE {
-  ?player rdf:type fb:Forward .
-  ?player fb:playerName ?name .
-  ?player fb:goalsScored ?goals .
-  ?player fb:playsFor ?team .
-  ?team fb:teamName ?teamName .
-  FILTER (?goals > 10)
-}
-ORDER BY DESC(?goals)
-```
-This query finds all forward players who have scored more than 10 goals, ordered by goal count descending.
+### Objets
+- **FootballObject**: Objets utilisés dans le football
+  - **Ball**: Ballons
+  - **Goal**: Buts
+  - **Card**: Cartons
+    - **YellowCard**: Cartons jaunes
+    - **RedCard**: Cartons rouges
 
-### Query 2: Find stadiums with capacity over 50,000 and the teams that play there
-```sparql
-PREFIX fb: <http://www.semanticweb.org/football-ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+## 🔗 Propriétés
 
-SELECT ?stadium ?name ?capacity ?team ?teamName
-WHERE {
-  ?stadium rdf:type fb:Stadium .
-  ?stadium fb:stadiumName ?name .
-  ?stadium fb:stadiumCapacity ?capacity .
-  ?team fb:homeStadium ?stadium .
-  ?team fb:teamName ?teamName .
-  FILTER (?capacity > 50000)
-}
-ORDER BY DESC(?capacity)
-```
-This query retrieves all stadiums with a capacity over 50,000, along with the teams that use them as their home stadium.
+### Propriétés d'Objet
+- **playsFor**: Relie un joueur à son équipe
+- **hasPlayer**: Relie une équipe à ses joueurs
+- **homeStadium**: Stade principal d'une équipe (fonctionnelle)
+- **isRivalOf**: Relation de rivalité entre équipes (symétrique)
+- **participatesIn**: Équipe participant à un tournoi
+- **coaches**: Relation entre entraîneur et équipe
+- **playedAt**: Match joué dans un stade
+- **refereesMatch**: Arbitre officiant un match
+- **receivesCard**: Joueur recevant un carton
 
-## OWL Features
+### Propriétés de Données
+- **playerName**: Nom du joueur
+- **playerPosition**: Position du joueur sur le terrain
+- **birthDate**: Date de naissance
+- **goalsScored**: Nombre de buts marqués
+- **matchesPlayed**: Nombre de matchs joués
+- **contractEndsIn**: Année d'expiration du contrat
+- **nationality**: Nationalité
+- **stadiumCapacity**: Capacité du stade
+- **teamName**: Nom de l'équipe
 
-The ontology uses the following OWL features:
-- Class hierarchies and inheritance
-- Property restrictions (domain and range)
-- Property characteristics (functional, inverse functional)
-- Equivalence relationships
-- Disjointness between classes
+## ⚙️ Règles SWRL
 
-## SWRL Rules
+L'ontologie comprend plusieurs règles SWRL qui permettent d'inférer automatiquement de nouvelles connaissances:
 
-### Rule 1: Identify experienced players
-```
-Player(?p) ^ goalsScored(?p, ?g) ^ swrlb:greaterThan(?g, 100) -> ExperiencedPlayer(?p)
-```
-This rule classifies any player who has scored more than 100 goals as an experienced player.
+1. **S1**: Classifie les joueurs avec plus de 500 matchs comme `ExperiencedPlayer`
+2. **S2**: Identifie les stades avec capacité > 90,000 comme `LargeStadium`
+3. **S3**: Établit des relations de rivalité entre les équipes de la même ville
+4. **S4**: Identifie les joueurs dont le contrat expire en 2023 comme `NeedsContractRenewal`
+5. **S5**: Classifie les joueurs avec plus de 300 buts comme `StarPlayer`
+6. **S6**: Qualifie automatiquement les équipes avec joueurs marquant > 500 buts pour la Ligue des Champions
 
-### Rule 2: Identify derby matches
-```
-Match(?m) ^ hasHomeTeam(?m, ?ht) ^ hasAwayTeam(?m, ?at) ^ 
-baseLocation(?ht, ?loc) ^ baseLocation(?at, ?loc) -> DerbyMatch(?m)
-```
-This rule identifies derby matches when both teams are from the same location.
+## 📥 Installation
 
-### Rule 3: Calculate player efficiency
-```
-Player(?p) ^ goalsScored(?p, ?g) ^ matchesPlayed(?p, ?m) ^ 
-swrlb:divide(?e, ?g, ?m) ^ swrlb:greaterThan(?e, 0.5) -> EfficientStriker(?p)
-```
-This rule identifies efficient strikers as players with a goal-to-match ratio greater than 0.5.
+Pour utiliser cette ontologie:
 
-### Rule 4: Identify potential transfers
-```
-Player(?p) ^ playsFor(?p, ?t1) ^ contractEndsIn(?p, ?year) ^ 
-swrlb:equal(?year, 2023) ^ Team(?t2) ^ needsPosition(?t2, ?pos) ^ 
-playerPosition(?p, ?pos) -> PotentialTransfer(?p, ?t2)
-```
-This rule identifies potential transfers by matching players whose contracts are ending with teams that need players in their positions.
+1. Téléchargez le fichier RDF/XML de l'ontologie
+2. Ouvrez-le avec un éditeur d'ontologies comme Protégé (version 5.5.0 ou supérieure recommandée)
+3. Pour le raisonnement, utilisez Pellet (recommandé) ou HermiT
 
-## Conclusion
-
-This football domain ontology demonstrates how semantic web technologies can be leveraged to model complex sporting domains. The ontology provides several advantages over traditional relational databases:
-
-1. **Flexible schema evolution**: The ontology can be easily extended with new concepts without breaking existing queries.
-2. **Inference capabilities**: Using OWL and SWRL, new knowledge can be inferred from existing data.
-3. **Integration of heterogeneous data**: The ontology can easily integrate data from multiple sources using shared vocabularies.
-4. **Complex relationships**: The ontology can represent complex relationships between entities that are difficult to model in relational databases.
-
-The ontology can be used for various applications such as match analysis, player scouting, tournament management, and fan engagement platforms.
+```bash
+# Si vous utilisez Apache Jena pour manipuler l'ontologie
+apache-jena/bin/riot --validate football-ontology.rdf
