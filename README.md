@@ -10,13 +10,9 @@ Cette ontologie modélise le domaine du football (soccer) en utilisant les techn
 * [Structure de l'Ontologie](#structure-de-lontologie)
 * [Classes Principales](#classes-principales)
 * [Propriétés](#propriétés)
-* [Règles SWRL](#règles-swrl)
-* [Installation](#installation)
-* [Utilisation](#utilisation)
 * [Exemples de Requêtes SPARQL](#exemples-de-requêtes-sparql)
-* [Exemples](#exemples)
-* [Licence](#licence)
-* [Contact](#contact)
+* [Règles SWRL](#règles-swrl)
+* [Utilisation](#utilisation)
 
 ## 🔍 Aperçu
 
